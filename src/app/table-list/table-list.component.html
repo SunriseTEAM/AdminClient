@@ -1,0 +1,130 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">Products List</h4>
+                        <p class="card-category"> Here is a subtitle for this table</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="card my-5">
+                            <div class="card-body">
+                                <table class="table table-bordered table-striped">
+                                    <thead class="thead-dark">
+
+                                    <tr>
+                                        <th scope="col">Tick</th>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Price</th>
+                                        <th scope="col">Added on</th>
+                                        <th scope="col">Category id</th>
+                                        <th scope="col">Here</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr *ngFor="let product of products">
+                                        <td>
+                                            <div class="form-check">
+                                                <label class="form-check-label">
+                                                    <input class="form-check-input" type="checkbox" value="" checked>
+                                                    <span class="form-check-sign">
+                                                          <span class="check"></span>
+                                                      </span>
+                                                </label>
+                                            </div>
+                                        </td>
+                                        <td>{{product.id}}</td>
+                                        <td>{{product.name}}</td>
+                                        <td>{{product.price}}</td>
+                                        <td>{{product.added_on}}</td>
+                                        <td>{{product.category_id}}</td>
+                                        <td class="td-actions text-right">
+                                            <button mat-raised-button type="button" matTooltip="Edit Task"
+                                                    [matTooltipPosition]="'above'"
+                                                    class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                                <i class="material-icons">edit</i>
+                                            </button>
+                                            <button mat-raised-button type="button" matTooltip="Remove"
+                                                    [matTooltipPosition]="'above'"
+                                                    class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                                <i class="material-icons">close</i>
+                                            </button>
+                                        </td>
+
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header card-header-danger">
+                            <h4 class="card-title ">User List</h4>
+                            <p class="card-category"> Here is a subtitle for this table</p>
+                        </div>
+                        <div class="card-body">
+                            <div class="card my-5">
+                                <div class="card-body">
+                                    <table class="table table-bordered table-striped">
+                                        <thead class="thead-dark">
+
+                                        <tr>
+                                            <th scope="col">Tick</th>
+                                            <th scope="col">ID</th>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Email</th>
+                                            <th scope="col">Password</th>
+                                            <th scope="col">Create at</th>
+                                            <th scope="col">Andress</th>
+                                            <th scope="col">Mobile</th>
+                                            <th scope="col">Here</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr *ngFor="let user of users">
+                                            <td>
+                                                <div class="form-check">
+                                                    <label class="form-check-label">
+                                                        <input class="form-check-input" type="checkbox" value="" checked>
+                                                        <span class="form-check-sign">
+                                                          <span class="check"></span>
+                                                      </span>
+                                                    </label>
+                                                </div>
+                                            </td>
+                                            <td>{{user.id}}</td>
+                                            <td>{{user.name}}</td>
+                                            <td>{{user.email}}</td>
+                                            <td>{{user.password}}</td>
+                                            <td>{{user.created_at}}</td>
+                                            <td>{{user.address}}</td>
+                                            <td>{{user.mobile}}</td>
+                                            <td class="td-actions text-right">
+                                                <button mat-raised-button type="button" matTooltip="Edit Task"
+                                                        [matTooltipPosition]="'above'"
+                                                        class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                                    <i class="material-icons">edit</i>
+                                                </button>
+                                                <button mat-raised-button type="button" matTooltip="Remove"
+                                                        [matTooltipPosition]="'above'"
+                                                        class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                                    <i class="material-icons">close</i>
+                                                </button>
+                                            </td>
+
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
