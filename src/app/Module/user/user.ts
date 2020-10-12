@@ -6,4 +6,5 @@ export class User {
     created_at: string;
     address: string;
     mobile:string;
+
 }
