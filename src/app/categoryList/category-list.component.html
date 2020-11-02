@@ -12,8 +12,51 @@
                     <div class="card-body">
                         <div class="card my-5">
                             <div class="card-body">
-                                <button type="submit" class="btn btn-success" style="margin-left: 950px">Add Category
-                                </button>
+                                <div class="container">
+                                    <!-- Trigger the modal with a button -->
+                                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add Category</button>
+                                    <button type="button" class="btn btn-info btn-lg">Delete All Category</button>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="myModal" role="dialog">
+                                        <div class="modal-dialog">
+
+                                            <!-- Modal content-->
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                    <h4 class="modal-title">Add Category</h4>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="card">
+                                                        <div class="card-header card-header-danger">
+                                                            <h4 class="card-title ">Category Form</h4>
+                                                            <p class="card-category"> Here is a subtitle for this table</p>
+                                                        </div>
+                                                        <div class="card my-5">
+                                                            <div class="card-body">
+                                                                <form (ngSubmit)="onSubmit()">
+                                                                    <div class="form-group">
+                                                                        <label for="name2">Category Name:</label>
+                                                                        <input type="text" class="form-control" placeholder="Enter Name"
+                                                                               id="name2" required [(ngModel)]="category1.name" name="name2">
+                                                                    </div>
+                                                                    <button type="submit" (click)="save()" class="btn btn-success">Submit</button>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal" routerLink="/">Close</button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
                                 <table class="table table-bordered table-striped">
 
                                     <thead class="thead-dark">
@@ -58,7 +101,7 @@
                                             <button mat-raised-button type="button" matTooltip="Update"
                                                     class="btn btn-primary btn-link btn-sm btn-just-icon"
                                                     (click)="updateCategory(category)">
-                                                <i class="material-icons">save</i>
+                                                <i class="material-icons">update</i>
                                             </button>
 
                                             <button mat-raised-button type="button" matTooltip="Remove"
@@ -77,6 +120,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 </div>

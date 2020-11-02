@@ -1,10 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 
 declare var $: any;
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Category} from '../Module/category';
 import {CategoryService} from '../Service/category.service';
 import {Message} from '../Module/message';
+import {ProductService} from '../Service/product.service';
+import {MessageService} from '../Module/message.spec';
 
 
 @Component({
@@ -16,16 +18,23 @@ export class CategoryListComponent implements OnInit {
     category: Array<Category> = [];
     showCategory: Category;
     isNameUpdate = false;
-    isUpdate: Array<boolean> = []
+    isUpdate: Array<boolean> = [];
+    category1: Category;
 
     // tslint:disable-next-line:max-line-length
-    constructor(private router: Router, private categoryService: CategoryService) {
+    constructor(
+        private route: ActivatedRoute,
+        private  router: Router,
+        private productService: ProductService,
+        private categoryService: CategoryService,
+        private messageService: MessageService) {
     }
 
     ngOnInit() {
         this.categoryService.findAll().subscribe(data => {
             this.category = data;
         });
+        this.category1 = new Category();
 
     }
 
@@ -45,7 +54,9 @@ export class CategoryListComponent implements OnInit {
         console.log(category);
         this.categoryService.updateCategory(category)
             .subscribe(data => {
-                    console.log('success');
+                    window.alert('Cập nhật thành công!')
+                    console.log(data);
+
                 }
                 , (error) => {
                     console.log(error);
@@ -57,5 +68,22 @@ export class CategoryListComponent implements OnInit {
         console.log(index);
         this.isUpdate[index] = !this.isUpdate[index];
         // this.isNameUpdate = !this.isNameUpdate;
+    }
+
+    save() {
+        this.categoryService.createCategory(this.category1)
+            .subscribe(data => {
+                window.alert('Thêm mới thành công!')
+                console.log(data);
+
+            }, error => {
+                console.log(error);
+            });
+    }
+    reset() {
+        this.category1 = new Category();
+    }
+    onSubmit() {
+            this.reset();
     }
 }
