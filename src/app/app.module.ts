@@ -22,6 +22,7 @@ import {CategoryFormComponent} from './table-form/category-form.component';
 
 
 
+
 @NgModule({
     imports: [
         BrowserAnimationsModule,

@@ -7,7 +7,6 @@ import { TableFormComponent } from '../../table-form/table-form.component';
 import { CategoryListComponent } from '../../categoryList/category-list.component';
 import { MapsComponent } from '../../maps/maps.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
-import {CategoryFormComponent} from '../../table-form/category-form.component';
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -56,8 +55,8 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'user-profile',   component: UserProfileComponent },
     { path: 'table-list',     component: TableListComponent },
     { path: 'typography',     component: TableFormComponent },
-    { path: 'category-form',     component: CategoryFormComponent },
-    { path: 'icons',          component: CategoryListComponent },
+
+    { path: 'category-list',          component: CategoryListComponent },
     { path: 'maps',           component: MapsComponent },
     { path: 'notifications',  component: NotificationsComponent },
 ];
