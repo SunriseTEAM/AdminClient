@@ -5,6 +5,10 @@ import {Product} from '../Module/product';
 import {ProductService} from '../Service/product.service';
 import {User} from '../Module/user/user';
 import {UserService} from '../Service/user.service';
+import {Category} from '../Module/category';
+import {CategoryService} from '../Service/category.service';
+import {Observable} from 'rxjs';
+import {Message} from '../Module/message';
 
 
 
@@ -16,7 +20,9 @@ import {UserService} from '../Service/user.service';
 export class TableListComponent implements OnInit {
     products: Product[];
     users: User[];
-    constructor(private router: Router, private productService: ProductService, private userService: UserService) {
+    category: Category[];
+    // tslint:disable-next-line:max-line-length
+    constructor(private router: Router, private productService: ProductService, private userService: UserService, private categoryService: CategoryService) {
     }
 
     ngOnInit() {
@@ -25,6 +31,9 @@ export class TableListComponent implements OnInit {
         });
         this.userService.findAll().subscribe(data => {
             this.users = data;
+        });
+        this.categoryService.findAll().subscribe(data => {
+            this.category = data;
         });
 
     }
@@ -41,19 +50,32 @@ export class TableListComponent implements OnInit {
                 error => console.log(error));
     }
 
+    deleteCategory(id: number) {
+        this.categoryService.deleteCategory(id)
+            .subscribe(
+                data => {
+                    window.alert('xóa thành công!')
+                    console.log(data);
+
+                },
+                error => console.log(error));
+
+    }
+
 
 // Thông báo Notification !
 
-    showNotification(from, align){
-        const type = ['','info','success','warning','danger'];
+
+    showNotification(from, align) {
+        const type = ['', 'info', 'success', 'warning', 'danger'];
 
         const color = Math.floor((Math.random() * 4) + 1);
 
         $.notify({
-            icon: "notifications",
-            message: "Welcome to <b>Admin Dashboard</b> - a beautiful client for every web developer."
+            icon: 'notifications',
+            message: 'Welcome to <b>Admin Dashboard</b> - a beautiful client for every web developer.'
 
-        },{
+        }, {
             type: type[color],
             timer: 100,
             placement: {
