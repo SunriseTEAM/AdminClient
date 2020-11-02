@@ -1,0 +1,26 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">Category Form</h4>
+                        <p class="card-category"> Here is a subtitle for this table</p>
+                    </div>
+                    <div class="card my-5">
+                        <div class="card-body">
+                            <form >
+                                <div class="form-group">
+                                    <label for="name2">Category Name:</label>
+                                    <input type="text" class="form-control" placeholder="Enter Name"
+                                           id="name2" required [(ngModel)]="category.name" name="name2">
+                                </div>
+                                <button type="submit" (click)="save()" class="btn btn-success">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

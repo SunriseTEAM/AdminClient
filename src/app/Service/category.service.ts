@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import {Category} from '../Module/category';
 import {Observable, throwError} from 'rxjs';
@@ -9,10 +9,11 @@ import {Message} from '../Module/message';
 })
 export class CategoryService {
     private categoryturl: string;
-private baseurl:string;
-private bassurl:string;
+    private baseurl: string;
+    private bassurl: string;
+
     constructor(private http: HttpClient) {
-        this.categoryturl = 'http://localhost:8090/api/category/getAll';
+        this.categoryturl = 'http://localhost:8090/api/category';
         this.baseurl = 'http://localhost:8090/api/category/deletebyid'
         this.bassurl = 'http://localhost:8090/api/category'
     }
@@ -34,18 +35,18 @@ private bassurl:string;
     };
 
     public findAll(): Observable<Category[]> {
-        return this.http.get<Category[]>(this.categoryturl);
+        return this.http.get<Category[]>(this.categoryturl + '/getAll');
 
     }
+
     createCategory(category: Category): Observable<any> {
         return this.http.post<any>(`${this.bassurl}` + `/create`, category);
     }
 
-    updateCategory(category: Category): Observable<Message> {
-        return this.http.put<Message> (`${this.categoryturl}` + `/updatebyid/` + category.id, category)
-            .pipe(
-            );
+    updateCategory(category: Category): Observable<Category> {
+        return this.http.put<Category>(`${this.categoryturl}` + `/updatebyid/` + category.id, category)
     }
+
     deleteCategory(id: number): Observable<any> {
         return this.http.delete<any>(`${this.baseurl}/${id}`);
     }

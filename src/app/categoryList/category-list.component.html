@@ -1,0 +1,82 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">Category List</h4>
+                        <p class="card-category"> Here is a subtitle for this table</p>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="card my-5">
+                            <div class="card-body">
+                                <button type="submit" class="btn btn-success" style="margin-left: 950px">Add Category
+                                </button>
+                                <table class="table table-bordered table-striped">
+
+                                    <thead class="thead-dark">
+
+                                    <tr>
+                                        <th scope="col">Tick</th>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Here</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr *ngFor="let category of category,  let index = index">
+                                        <td>
+                                            <div class="form-check">
+                                                <label class="form-check-label">
+                                                    <input class="form-check-input" type="checkbox" value=""
+                                                    >
+                                                    <span class="form-check-sign">
+                                                          <span class="check"></span>
+                                                      </span>
+                                                </label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            {{category.id}}
+                                        </td>
+                                        <td *ngIf="!isUpdate[index]">
+                                            {{category.name}}
+                                            <a (click)="updateName(index)"></a>
+                                        </td>
+                                        <div *ngIf="isUpdate[index]">
+                                            <input type="text" [(ngModel)]="category.name">
+                                        </div>
+                                        <td class="td-actions text-right">
+                                            <button mat-raised-button type="button" matTooltip="Edit"
+                                                    [matTooltipPosition]="'above'"
+                                                    class="btn btn-primary btn-link btn-sm btn-just-icon"
+                                                    (click)="updateName(index)">
+                                                <i class="material-icons">edit</i>
+                                            </button>
+                                            <button mat-raised-button type="button" matTooltip="Update"
+                                                    class="btn btn-primary btn-link btn-sm btn-just-icon"
+                                                    (click)="updateCategory(category)">
+                                                <i class="material-icons">save</i>
+                                            </button>
+
+                                            <button mat-raised-button type="button" matTooltip="Remove"
+                                                    [matTooltipPosition]="'above'"
+                                                    class="btn btn-danger btn-link btn-sm btn-just-icon"
+                                                    (click)='deleteCategory(category.id)'>
+                                                <i class="material-icons">close</i>
+                                            </button>
+                                        </td>
+
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
