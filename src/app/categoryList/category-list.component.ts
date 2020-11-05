@@ -35,7 +35,6 @@ export class CategoryListComponent implements OnInit {
             this.category = data;
         });
         this.category1 = new Category();
-
     }
 
     deleteCategory(id: number) {
@@ -80,6 +79,16 @@ export class CategoryListComponent implements OnInit {
                 console.log(error);
             });
     }
+
+    getCategoryById() {
+        let findedData = this.category1.id;
+        if (typeof findedData === 'undefined') {
+            return null;
+        }
+        return findedData;
+
+    }
+
     reset() {
         this.category1 = new Category();
     }
