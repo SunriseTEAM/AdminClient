@@ -11,14 +11,13 @@ import {Message} from '../Module/message';
 
 
 @Component({
-    selector: 'app-table-form',
-    templateUrl: './category-form.component.html',
-    styleUrls: ['./category-form.component.css']
+    selector: 'app-typography',
+    templateUrl: './table-form.component.html',
+    styleUrls: ['./table-form.component.css']
 })
 export class CategoryFormComponent implements OnInit {
     product: Product;
     category: Category;
-
 
 
     // tslint:disable-next-line:max-line-length
@@ -55,5 +54,4 @@ export class CategoryFormComponent implements OnInit {
         this.save();
         this.reset();
     }
-
 }
