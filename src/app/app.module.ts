@@ -34,7 +34,7 @@ import {CategoryFormComponent} from './table-form/category-form.component';
         RouterModule,
         AppRoutingModule,
         AgmCoreModule.forRoot({
-            apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
+            apiKey: 'AIzaSyB7XItI_xaSQZDbUD86VKagauc-Mc9wXZc'
         }),
         MatTooltipModule
     ],
