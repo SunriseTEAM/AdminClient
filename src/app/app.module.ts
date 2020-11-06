@@ -19,6 +19,8 @@ import {HttpClientModule} from '@angular/common/http';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {CategoryListComponent} from './categoryList/category-list.component';
 import {CategoryFormComponent} from './table-form/category-form.component';
+import {UserListComponent} from './userList/user-list.component';
+import {ProductListComponent} from './productList/product-list.component';
 
 
 
@@ -43,7 +45,9 @@ import {CategoryFormComponent} from './table-form/category-form.component';
     AppComponent,
     AdminLayoutComponent,
       CategoryListComponent,
-      CategoryFormComponent
+      CategoryFormComponent,
+      UserListComponent,
+      ProductListComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -30,9 +30,6 @@ export class CategoryFormComponent implements OnInit {
         this.category = new Category();
     }
 
-    gotoProductList() {
-        this.router.navigate(['/products']);
-    }
 
     save() {
         this.categoryService.createCategory(this.category)

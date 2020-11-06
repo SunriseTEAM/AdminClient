@@ -61,8 +61,6 @@
                                                 </div>
                                                 <div class="modal-footer">
 
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-
                                                     <button type="button" class="btn btn-default" data-dismiss="modal" routerLink="/category-list">Close</button>
 
                                                 </div>
@@ -116,12 +114,12 @@
                                             <button mat-raised-button type="submit" matTooltip="Update"
                                                     class="btn btn-primary btn-link btn-sm btn-just-icon" (click)="updateName(index)" (click)="showNotification('top','right')"
                                                     (click)="updateCategory(category)">
-                                                <i class="material-icons">update</i>
+                                                <i class="material-icons" routerLink="/category-list">update</i>
                                             </button>
                                             <button mat-raised-button type="button" matTooltip="Remove"
                                                     [matTooltipPosition]="'above'"
                                                     class="btn btn-danger btn-link btn-sm btn-just-icon"
-                                                    (click)='deleteCategory(category.id)'>
+                                                    (click)='deleteCategory(category.id)' routerLink="/category-list">
                                                 <i class="material-icons">close</i>
                                             </button>
                                         </td>

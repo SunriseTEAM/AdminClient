@@ -1,0 +1,203 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">Users List</h4>
+                        <p class="card-category"> Here is a subtitle for this table</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="card my-5">
+                            <div class="card-body">
+                                <div class="container">
+                                    <!-- Trigger the modal with a button -->
+                                    <div class="button-left" style="float: left">
+                                        <form class="form-inline my-2 my-lg-0">
+                                            <input class="form-control mr-sm-2" type="name2" placeholder="Name" aria-label="Name">
+                                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                                        </form>
+                                    </div>
+
+                                    <div class ="button-right" style="float: right">
+                                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Add Users</button>
+                                        <button type="button" class="btn btn-success">Delete All Users</button>
+                                    </div>
+                                    <br/>
+
+                                    <div class="modal fade" id="myModal" role="dialog">
+                                        <div class="modal-dialog">
+
+                                            <!-- Modal content-->
+                                            <div class="modal-content">
+
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                </div>
+
+                                                <br/>
+
+                                                <div class="col-md-12">
+                                                    <div class="card">
+                                                        <div class="card-header card-header-danger">
+                                                            <h4 class="card-title ">Users Form</h4>
+                                                            <p class="card-category"> Here is a subtitle for this table</p>
+                                                        </div>
+                                                        <div class="card my-5">
+                                                            <div class="card-body">
+                                                                <form (ngSubmit)="onSubmit()">
+                                                                    <div class="form-group">
+                                                                        <label for="name">User Name:</label>
+                                                                        <input type="text" class="form-control" placeholder="Enter Name"
+                                                                               id="name" required [(ngModel)]="user1.name" name="name">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="email">Email:</label>
+                                                                        <input type="text" class="form-control" placeholder="Enter Email"
+                                                                               id="email" required [(ngModel)]="user1.email" name="email">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="password">Password:</label>
+                                                                        <input type="text" class="form-control" placeholder="Enter Password"
+                                                                               id="password" required [(ngModel)]="user1.password" name="password">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="created_at">Created_at:</label>
+                                                                        <input type="text" class="form-control" placeholder="Enter Name"
+                                                                               id="created_at" required [(ngModel)]="user1.created_at" name="created_at">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="address">Address:</label>
+                                                                        <input type="text" class="form-control" placeholder="Enter Name"
+                                                                               id="address" required [(ngModel)]="user1.address" name="address">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="mobile">Mobile:</label>
+                                                                        <input type="text" class="form-control" placeholder="Enter Name"
+                                                                               id="mobile" required [(ngModel)]="user1.mobile" name="mobile">
+                                                                    </div>
+                                                                    <button type="submit" (click)="saveUser()" class="btn btn-success">Submit</button>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal" routerLink="/user-list">Close</button>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <br/>
+
+                                <table class="table table-bordered table-striped">
+                                    <thead class="thead-dark">
+
+                                    <tr>
+                                        <th scope="col">Tick</th>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col">Password</th>
+                                        <th scope="col">Create at</th>
+                                        <th scope="col">Andress</th>
+                                        <th scope="col">Mobile</th>
+                                        <th scope="col">Here</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr *ngFor="let user of users, let index = index">
+                                        <td>
+                                            <div class="form-check">
+                                                <label class="form-check-label">
+                                                    <input class="form-check-input" type="checkbox" value=""
+                                                    >
+                                                    <span class="form-check-sign">
+                                                          <span class="check"></span>
+                                                      </span>
+                                                </label>
+                                            </div>
+                                        </td>
+                                        <td>{{user.id}}</td>
+
+                                        <td *ngIf="!isUpdate[index]">
+                                            {{user.name}}
+                                            <a (click)="updateName(index)"></a>
+                                        </td>
+                                        <div *ngIf="isUpdate[index]">
+                                            <input type="text" [(ngModel)]="user.name">
+                                        </div>
+
+                                        <td *ngIf="!isUpdate[index]">
+                                            {{user.email}}
+                                            <a (click)="updateEmail(index)"></a>
+                                        </td>
+                                        <div *ngIf="isUpdate[index]">
+                                            <input type="text" [(ngModel)]="user.email">
+                                        </div>
+
+                                        <td *ngIf="!isUpdate[index]">
+                                            {{user.password}}
+                                            <a (click)="updatePassword(index)"></a>
+                                        </td>
+                                        <div *ngIf="isUpdate[index]">
+                                            <input type="text" [(ngModel)]="user.password">
+                                        </div>
+
+                                        <td>{{user.created_at}}</td>
+
+                                        <td *ngIf="!isUpdate[index]">
+                                            {{user.address}}
+                                            <a (click)="updateAddress(index)"></a>
+                                        </td>
+                                        <div *ngIf="isUpdate[index]">
+                                            <input type="text" [(ngModel)]="user.address">
+                                        </div>
+
+                                        <td *ngIf="!isUpdate[index]">
+                                            {{user.mobile}}
+                                            <a (click)="updateMobile(index)"></a>
+                                        </td>
+                                        <div *ngIf="isUpdate[index]">
+                                            <input type="text" [(ngModel)]="user.mobile">
+                                        </div>
+
+                                        <td class="td-actions text-right">
+                                            <button mat-raised-button type="button" matTooltip="Edit"
+                                                    [matTooltipPosition]="'above'"
+                                                    class="btn btn-primary btn-link btn-sm btn-just-icon"
+                                                    (click)="updateName(index)">
+                                                <i class="material-icons">edit</i>
+                                            </button>
+                                            <button mat-raised-button type="submit" matTooltip="Update"
+                                                    class="btn btn-primary btn-link btn-sm btn-just-icon" (click)="updateName(index)" (click)="showNotification('top','right')"
+                                                    (click)="updateUser(user)">
+                                                <i class="material-icons">update</i>
+                                            </button>
+
+                                            <button mat-raised-button type="button" matTooltip="Remove"
+                                                    [matTooltipPosition]="'above'"
+                                                    class="btn btn-danger btn-link btn-sm btn-just-icon"
+                                                    (click)='deleteUser(user.id)'>
+                                                <i class="material-icons">close</i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

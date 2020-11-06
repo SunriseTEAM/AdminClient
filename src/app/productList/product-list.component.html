@@ -1,0 +1,246 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">Products List</h4>
+                        <p class="card-category"> Here is a subtitle for this table</p>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="card my-5">
+                            <div class="card-body">
+                                <div class="container">
+                                    <!-- Trigger the modal with a button -->
+                                    <div class="button-left" style="float: left">
+                                        <form class="form-inline my-2 my-lg-0">
+                                            <input class="form-control mr-sm-2" type="name2" placeholder="Name" aria-label="Name">
+                                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                                        </form>
+                                    </div>
+
+                                    <div class ="button-right" style="float: right">
+                                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Add Products</button>
+                                        <button type="button" class="btn btn-success">Delete All Products</button>
+                                    </div>
+                                    <br/>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="myModal" role="dialog" >
+                                        <div class="modal-dialog">
+
+                                            <!-- Modal content-->
+                                            <div class="modal-content " >
+
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                </div>
+
+                                                <br/>
+
+                                                <div class="col-md-12">
+                                                    <div class="card">
+                                                        <div class="card-header card-header-danger">
+                                                            <h4 class="card-title ">Products Form</h4>
+                                                            <p class="card-category"> Here is a subtitle for this table</p>
+                                                        </div>
+                                                        <div class="card my-5 ">
+                                                            <div class="card-body">
+                                                                <form (ngSubmit)="onSubmit()">
+                                                                    <div class="form-group">
+                                                                        <label for="name">Product Name:</label>
+                                                                        <input type="text" class="form-control" placeholder="Enter Name"
+                                                                               id="name" required [(ngModel)]="product1.name" name="name">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="price">Price:</label>
+                                                                        <input type="text" class="form-control" placeholder="Enter Price"
+                                                                               id="price" required [(ngModel)]="product1.price" name="price">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="images">Image:</label>
+                                                                        <input type="text" class="form-control" placeholder="Enter Name"
+                                                                               id="images" required [(ngModel)]="product1.images" name="images">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="added_on">Added_on:</label>
+                                                                        <input type="text" class="form-control" placeholder="Enter Added_on"
+                                                                               id="added_on" required [(ngModel)]="product1.added_on" name="added_on">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="category_id">Category_id:</label>
+                                                                        <input type="text" class="form-control" placeholder="Enter Category_id"
+                                                                               id="category_id" required [(ngModel)]="product1.category_id" name="category_id">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="quatityavi">Quatityavi:</label>
+                                                                        <input type="text" class="form-control" placeholder="Enter Quatityavi"
+                                                                               id="quatityavi" required [(ngModel)]="product1.quatityavi" name="quatityavi">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="description">Description:</label>
+                                                                        <input type="text" class="form-control" placeholder="Enter Description"
+                                                                               id="description" required [(ngModel)]="product1.description" name="description">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="ratings">Ratings:</label>
+                                                                        <input type="text" class="form-control" placeholder="Enter Ratings"
+                                                                               id="ratings" required [(ngModel)]="product1.name" name="ratings">
+                                                                    </div>
+
+                                                                    <div class="form-group">
+                                                                        <label for="favourite">Favourite:</label>
+                                                                        <input type="text" class="form-control" placeholder="Enter Favourite"
+                                                                               id="favourite" required [(ngModel)]="product1.favourite" name="favourite">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="seller">Seller:</label>
+                                                                        <input type="text" class="form-control" placeholder="Enter seller"
+                                                                               id="seller" required [(ngModel)]="product1.seller" name="seller">
+                                                                    </div>
+                                                                    <button type="submit" (click)="saveProduct()" class="btn btn-success">Submit</button>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal" routerLink="/product-list">Close</button>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <br/>
+                                <table class="table table-bordered table-striped">
+                                    <thead class="thead-dark">
+
+                                    <tr>
+                                        <th scope="col">Tick</th>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Price</th>
+                                        <th scope="col">Images</th>
+                                        <th scope="col">Description</th>
+                                        <th scope="col">Quatityavi</th>
+                                        <th scope="col">Added on</th>
+                                        <th scope="col">Category id</th>
+                                        <th scope="col">Ratings</th>
+                                        <th scope="col">Favourite</th>
+                                        <th scope="col">Seller</th>
+                                        <th scope="col">Here</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr *ngFor="let product of product,  let index = index">
+                                        <td>
+                                            <div class="form-check">
+                                                <label class="form-check-label">
+                                                    <input class="form-check-input" type="checkbox" value="">
+                                                    <span class="form-check-sign">
+                                                          <span class="check"></span>
+                                                      </span>
+                                                </label>
+                                            </div>
+                                        </td>
+                                        <td>{{product.id}}</td>
+
+                                        <td *ngIf="!isUpdate[index]">
+                                            {{product.name}}
+                                            <a (click)="updateName(index)"></a>
+                                        </td>
+                                        <div *ngIf="isUpdate[index]">
+                                            <input type="text" [(ngModel)]="product.name">
+                                        </div>
+
+                                        <td *ngIf="!isUpdate[index]">
+                                            {{product.price}}
+                                            <a (click)="updateName(index)"></a>
+                                        </td>
+                                        <div *ngIf="isUpdate[index]">
+                                            <input type="text" [(ngModel)]="product.price">
+                                        </div>
+
+                                        <td>{{product.images}}</td>
+
+                                        <td *ngIf="!isUpdate[index]">
+                                            {{product.description}}
+                                            <a (click)="updateName(index)"></a>
+                                        </td>
+                                        <div *ngIf="isUpdate[index]">
+                                            <input type="text" [(ngModel)]="product.description">
+                                        </div>
+
+                                        <td *ngIf="!isUpdate[index]">
+                                            {{product.quatityavi}}
+                                            <a (click)="updateName(index)"></a>
+                                        </td>
+                                        <div *ngIf="isUpdate[index]">
+                                            <input type="text" [(ngModel)]="product.quatityavi">
+                                        </div>
+
+                                        <td>{{product.added_on}}</td>
+                                        <td>{{product.category_id}}</td>
+
+                                        <td *ngIf="!isUpdate[index]">
+                                            {{product.ratings}}
+                                            <a (click)="updateName(index)"></a>
+                                        </td>
+                                        <div *ngIf="isUpdate[index]">
+                                            <input type="text" [(ngModel)]="product.ratings">
+                                        </div>
+
+                                        <td *ngIf="!isUpdate[index]">
+                                            {{product.favourite}}
+                                            <a (click)="updateName(index)"></a>
+                                        </td>
+                                        <div *ngIf="isUpdate[index]">
+                                            <input type="text" [(ngModel)]="product.favourite">
+                                        </div>
+
+                                        <td *ngIf="!isUpdate[index]">
+                                            {{product.seller}}
+                                            <a (click)="updateName(index)"></a>
+                                        </td>
+                                        <div *ngIf="isUpdate[index]">
+                                            <input type="text" [(ngModel)]="product.seller">
+                                        </div>
+
+                                        <td class="td-actions text-right">
+                                            <button mat-raised-button type="button" matTooltip="Edit"
+                                                    [matTooltipPosition]="'above'"
+                                                    class="btn btn-primary btn-link btn-sm btn-just-icon"
+                                                    (click)="updateName(index)">
+                                                <i class="material-icons">edit</i>
+                                            </button>
+                                            <button mat-raised-button type="submit" matTooltip="Update"
+                                                    class="btn btn-primary btn-link btn-sm btn-just-icon" (click)="updateName(index)" (click)="showNotification('top','right')"
+                                                    (click)="updateProduct(product)">
+                                                <i class="material-icons" routerLink="/product-list">update</i>
+                                            </button>
+                                            <button mat-raised-button type="button" matTooltip="Remove"
+                                                    [matTooltipPosition]="'above'"
+                                                    class="btn btn-danger btn-link btn-sm btn-just-icon"
+                                                    (click)='deleteProduct(product.id)' routerLink="/product-list">
+                                                <i class="material-icons">close</i>
+                                            </button>
+
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
