@@ -57,11 +57,31 @@
                                                                         <input type="text" class="form-control" placeholder="Enter Price"
                                                                                id="price" required [(ngModel)]="product1.price" name="price">
                                                                     </div>
+
+
                                                                     <div class="form-group">
-                                                                        <label for="images">Image:</label>
-                                                                        <input type="text" class="form-control" placeholder="Enter Name"
-                                                                               id="images" required [(ngModel)]="product1.images" name="images">
+                                                                        <label for="images">Images:</label>
+                                                                        <label class="btn btn-default">
+                                                                            <i class="fa fa-upload"><input type="file" id="images" (change)="selectFile($event)" /></i>
+                                                                        </label>
+                                                                        <div *ngIf="currentFile" class="progress">
+                                                                            <div
+                                                                                    class="progress-bar progress-bar-info progress-bar-striped"
+                                                                                    role="progressbar"
+                                                                                    attr.aria-valuenow="{{ progress }}"
+                                                                                    aria-valuemin="0"
+                                                                                    aria-valuemax="100"
+                                                                                    [ngStyle]="{ width: progress + '%' }"
+                                                                            >
+                                                                                {{ progress }}%
+                                                                            </div>
+                                                                        </div>
+                                                                        <button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">
+                                                                            Upload
+                                                                        </button>
+
                                                                     </div>
+
                                                                     <div class="form-group">
                                                                         <label for="added_on">Added_on:</label>
                                                                         <input type="text" class="form-control" placeholder="Enter Added_on"
@@ -85,7 +105,7 @@
                                                                     <div class="form-group">
                                                                         <label for="ratings">Ratings:</label>
                                                                         <input type="text" class="form-control" placeholder="Enter Ratings"
-                                                                               id="ratings" required [(ngModel)]="product1.name" name="ratings">
+                                                                               id="ratings" required [(ngModel)]="product1.ratings" name="ratings">
                                                                     </div>
 
                                                                     <div class="form-group">

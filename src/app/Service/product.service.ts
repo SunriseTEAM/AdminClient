@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse, HttpEvent, HttpHeaders, HttpRequest} from '@angular/common/http';
 import {Category} from '../Module/category';
 import {Observable, throwError} from 'rxjs';
 import {Message} from '../Module/message';
@@ -13,12 +13,14 @@ export class ProductService {
   private baseurl: string;
   private bassurl: string;
   private categoryurl: string;
+  private baseUrll: string;
 
   constructor(private http: HttpClient) {
     this.producturl = 'http://localhost:8090/api/product';
     this.baseurl = 'http://localhost:8090/api/product/deletebyid';
     this.bassurl = 'http://localhost:8090/api/product';
     this.categoryurl ='http://localhost:8090/api/product';
+    this.baseUrll = 'http://localhost:8090';
   }
 
   private handleError(error: HttpErrorResponse) {
@@ -62,4 +64,22 @@ export class ProductService {
   return this.http.get<Product[]>(this.producturl + '/getAllCategory');
   }
 
+  //
+
+  upload(file: File): Observable<HttpEvent<any>> {
+    const formData: FormData = new FormData();
+
+    formData.append('file', file);
+
+    const req = new HttpRequest('POST', `${this.baseUrll}/upload`, formData, {
+      reportProgress: true,
+      responseType: 'json'
+    });
+
+    return this.http.request(req);
+  }
+
+  getFiles(): Observable<any> {
+    return this.http.get(`${this.baseUrll}/files`);
+  }
 }

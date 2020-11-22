@@ -9,6 +9,8 @@ import {ProductService} from '../Service/product.service';
 import {MessageService} from '../Module/message.spec';
 import {Product} from '../Module/product';
 import {HttpServiceService} from '../Service/http-service.service';
+import {Observable} from 'rxjs';
+import {HttpEventType, HttpResponse} from '@angular/common/http';
 
 
 @Component({
@@ -24,6 +26,13 @@ export class ProductListComponent implements OnInit {
     product1: Product;
 
     // tslint:disable-next-line:max-line-length
+    selectedFiles: FileList;
+    currentFile: File;
+    progress = 0;
+    message = '';
+
+    fileInfos: Observable<any>;
+
     constructor(
         private route: ActivatedRoute,
         private  router: Router,
@@ -31,6 +40,30 @@ export class ProductListComponent implements OnInit {
         private messageService: MessageService,
         private http: HttpServiceService
        ) {
+    }
+    upload() {
+        this.progress = 0;
+
+        this.currentFile = this.selectedFiles.item(0);
+        this.productService.upload(this.currentFile).subscribe(
+            event => {
+                if (event.type === HttpEventType.UploadProgress) {
+                    this.progress = Math.round(100 * event.loaded / event.total);
+                } else if (event instanceof HttpResponse) {
+                    this.message = event.body.message;
+                    this.fileInfos = this.productService.getFiles();
+                }
+            },
+            err => {
+                this.progress = 0;
+                this.message = 'Could not upload the file!';
+                this.currentFile = undefined;
+            });
+
+        this.selectedFiles = undefined;
+    }
+    selectFile(event) {
+        this.selectedFiles = event.target.files;
     }
     showNotification(from, align){
         const type = ['','success'];
@@ -65,6 +98,7 @@ export class ProductListComponent implements OnInit {
             this.product = data;
         });
         this.product1 = new Product();
+        this.fileInfos = this.productService.getFiles();
     }
 
     deleteProduct(id: number) {
